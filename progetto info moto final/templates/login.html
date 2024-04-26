@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background: url('../images/1.jpg') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
 </head>
-<body>
+<body class="hero1">
     <div class="container">
         <h2>Login</h2>
         {% with messages = get_flashed_messages() %}

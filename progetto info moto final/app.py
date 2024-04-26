@@ -7,8 +7,9 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = '123456789'
-app.config['UPLOAD_FOLDER'] = 'static/images/motos'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+app.config['UPLOAD_FOLDER'] = './static/images/motos/'
+app.config['UPLOAD_FOLDER1'] = './static/images/tracks/'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 500 * 500
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 login_manager = LoginManager()
@@ -92,12 +93,11 @@ def add_moto():
         image_file = request.files['image']
         if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
-            # Ensure the UPLOAD_FOLDER directory exists
             if not os.path.exists(app.config['UPLOAD_FOLDER']):
                 os.makedirs(app.config['UPLOAD_FOLDER'])
-            # Save the file to the UPLOAD_FOLDER directory
             try:
-                image_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                image_file.save(os.path.join(app.config['UPLOAD_FOLDER'] + filename))
+                print(app.config['UPLOAD_FOLDER'], filename)
             except Exception as e:
                 return f"An error occurred while saving the file: {e}"
             conn = get_db_connection()
@@ -120,10 +120,11 @@ def add_tracciato():
         image_file = request.files['image']
         if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
-            image_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print(app.config['UPLOAD_FOLDER1'] + filename)
+            image_file.save(os.path.join(app.config['UPLOAD_FOLDER1'] + filename))
             conn = get_db_connection()
             conn.execute('INSERT INTO tracciati (nome, lunghezza, curvatura, nazione, image_path) VALUES (?, ?, ?, ?, ?)',
-                         (nome, float(lunghezza), int(curvatura), nazione, filename))
+                         (nome, float(lunghezza), int(curvatura), nazione, (app.config['UPLOAD_FOLDER1'] + filename)[8:]))
             conn.commit()
             conn.close()
             return redirect(url_for('index'))

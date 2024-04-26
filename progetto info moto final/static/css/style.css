@@ -1,106 +1,205 @@
-/* Reset di base per rimuovere i margini e i padding predefiniti */
+/* CSS completo basato sulle istruzioni fornite e ispirato allo stile del sito KTM */
+:root {
+    --background-color: #f4f4f4;
+    --primary-color: #282c34;
+    --accent-color: #d2232a;
+    --text-color: #ffffff;
+    --secondary-text-color: #aaaaaa;
+    --link-color: #dddddd;
+    --link-hover-color: #ffffff;
+    --footer-background: #202020;
+    --transition-speed: 0.3s;
+    --font-main: 'Arial', sans-serif;
+    --font-hero: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+html, body {
+    height: 100%;
+    font-family: var(--font-main);
+    background-color: var(--background-color);
+    color: var(--secondary-text-color);
     line-height: 1.6;
-    padding: 20px;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
+a {
+    color: var(--link-color);
+    text-decoration: none;
 }
 
-/* Navbar */
+a:hover {
+    color: var(--link-hover-color);
+}
+
 nav {
+    background-color: var(--primary-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 7px 15px;
-    transition: background 0.3s ease;
-}
-
-nav a:hover {
-    background: #555;
-}
-
-/* Bottone */
-.btn {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    transition: opacity 0.3s ease;
-}
-
-.btn:hover {
-    opacity: 0.7;
-}
-
-/* Form */
-form {
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-form .form-group {
-    margin-bottom: 20px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-form input[type='text'],
-form select {
+    padding: 1rem 5%;
+    position: fixed;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Tabella */
+nav .logo {
+    font-size: 1.5em;
+    color: var(--accent-color);
+}
+
+nav .navigation-links a {
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+nav .navigation-links a:hover {
+    color: var(--accent-color);
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../images/2.jpg') no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.hero-content h1 {
+    font-family: var(--font-hero);
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-content .btn {
+    background-color: var(--accent-color);
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease-in-out;
+}
+
+.hero-content .btn:hover {
+    background-color: darken(var(--accent-color), 10%);
+}
+
+
+.hero1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../images/1.jpg') no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.hero1-content h1 {
+    font-family: var(--font-hero);
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero1-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero1-content .btn {
+    background-color: var(--accent-color);
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease-in-out;
+}
+
+.hero1-content .btn:hover {
+    background-color: darken(var(--accent-color), 10%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.moto-list, .track-list {
+    margin-top: 2rem;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 1rem;
 }
 
 table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
+    border: 1px solid #ddd;
     text-align: left;
     padding: 8px;
 }
 
-th {
-    background-color: #333;
-    color: #fff;
+footer {
+    background-color: var(--footer-background);
+    color: var(--secondary-text-color);
+    padding: 2rem 5%;
+    text-align: center;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+footer p {
+    margin-bottom: 0.5rem;
 }
+
+footer a {
+    color: var(--secondary-text-color);
+}
+
+footer a:hover {
+    color: var(--link-hover-color);
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav .navigation-links a {
+        padding: 0.5rem 0;
+    }
+
+    .container {
+        margin-top: 120px; /* Aumentare se la navbar è più alta */
+    }
+}
+
+/* Aggiungi altre regole CSS secondo necessità */

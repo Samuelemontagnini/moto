@@ -26,4 +26,7 @@ ALTER TABLE tracciati ADD COLUMN image_path TEXT;
 INSERT INTO tracciati (nome, lunghezza, curvatura, nazione, image_path)
 VALUES ('Monza Circuit', 5.793, 11, 'Italia', 'images/tracks/monza_circuit.jpg');
 
+INSERT INTO moto (modello,cilindrata,cv, image_path)
+VALUES ('ktm','450','35', '450.jpg');
+
 
