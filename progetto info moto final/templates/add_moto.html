@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Aggiungi una nuova moto</h2>
+    <form method="post" enctype="multipart/form-data">
+        <label for="modello">Modello</label>
+        <input type="text" name="modello" id="modello" required>
+        <label for="cilindrata">Cilindrata</label>
+        <input type="text" name="cilindrata" id="cilindrata" required>
+        <label for="cv">Cv</label>
+        <input type="text" name="cv" id="cv" required>
+        <label for="image">Immagine della Moto:</label>
+        <input type="file" name="image" id="image" required>
+        <input type="submit" value="Aggiungi">
+    </form>
+{% endblock %}
