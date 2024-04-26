@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Profilo di {{ user.username }}</h1>
+    <p>Benvenuto al tuo profilo, {{ user.username }}!</p>
+    <!-- Aggiungi qui ulteriori informazioni che vuoi mostrare nel profilo -->
+    <div>
+        <h3>Dettagli:</h3>
+        <p>ID Utente: {{ user.id }}</p>
+        <!-- Assumi che ci siano altri campi come email, data di registrazione, ecc. -->
+        <p>Email: {{ user.email if user.email else 'Non specificato' }}</p>
+        <p>Data di registrazione: {{ user.registration_date }}</p>
+    </div>
+    <a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+</div>
+{% endblock %}

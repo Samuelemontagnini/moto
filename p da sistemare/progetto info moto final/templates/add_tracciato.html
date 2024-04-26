@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Aggiungi un nuovo Tracciato</h2>
+    <form method="post" enctype="multipart/form-data" class="form-container">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="lunghezza">Lunghezza (in km):</label>
+            <input type="number" step="0.1" id="lunghezza" name="lunghezza" required>
+        </div>
+        <div class="form-group">
+            <label for="curvatura">Curvatura:</label>
+            <input type="number" id="curvatura" name="curvatura" required>
+        </div>
+        <div class="form-group">
+            <label for="nazione">Nazione:</label>
+            <input type="text" id="nazione" name="nazione" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Immagine del Tracciato:</label>
+            <input type="file" name="image" id="image" required>
+        </div>
+        <button type="submit" class="btn">Aggiungi Tracciato</button>
+    </form>
+{% endblock %}

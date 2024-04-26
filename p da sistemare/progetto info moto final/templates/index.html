@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Scopri la nostra gamma di moto!</h1>
+            <p>Esplora i modelli più recenti e le piste da sogno per i veri appassionati.</p>
+            <p>Scopri di Più</p>
+        </div>
+    </main>
+
+    <section class="moto-list">
+        <div class="container">
+            <h2>Elenco Moto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modello</th>
+                        <th>Cilindrata</th>
+                        <th>CV</th>
+                        <th>Velocità massima</th>
+                        <th>Immagine</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for moto in motos %}
+                    <tr>
+                        <td>{{ moto.modello }}</td>
+                        <td>{{ moto.cilindrata }}</td>
+                        <td>{{ moto.cv }}</td>
+                        <td>{{ moto.velocita_massima }} km/h</td>
+                        <td><img src="{{ url_for('static', filename=moto.image_path) }}" alt="{{ moto.modello }}" height="auto" width="300"></td>
+                    </tr>                    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="track-list">
+        <div class="container">
+            <h2>Elenco Tracciati</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Lunghezza</th>
+                        <th>Curvatura</th>
+                        <th>Nazione</th>
+                        <th>Immagine</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tracciato in tracciati %}
+                    <tr>
+                        <td>{{ tracciato.nome }}</td>
+                        <td>{{ tracciato.lunghezza }} km</td>
+                        <td>{{ tracciato.curvatura }}</td>
+                        <td>{{ tracciato.nazione }}</td>
+                        <td><img src="{{ url_for('static', filename=tracciato.image_path) }}" alt="{{ tracciato.nome }}"  height="auto" width="250"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

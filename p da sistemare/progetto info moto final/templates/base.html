@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Progetto Moto</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('add_moto') }}">Aggiungi Moto</a>
+            <a href="{{ url_for('add_tracciato') }}">Aggiungi Tracciato</a>
+            <div class="nav-right">
+                {% if current_user.is_authenticated %}
+                    <div class="profile-menu">
+                        <button class="dropbtn">{{ current_user.username }}</button>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('profile') }}">Profilo</a>
+                            <a href="{{ url_for('logout') }}">Logout</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}">Registrati</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    
+    
+    
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <p>Email: info@motoprogetto.it</p>
+                <p>Telefono: +39 012 345 6789</p>
+            </div>
+            <div class="footer-section">
+                <h4>Seguici</h4>
+                <p>
+                    <a href="http://facebook.com">Facebook</a> |
+                    <a href="http://twitter.com">Twitter</a> |
+                    <a href="http://instagram.com">Instagram</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Su di noi</h4>
+                <p>Progetto Moto e Tracciati è il tuo sito di riferimento per notizie e aggiornamenti sul mondo delle moto e dei tracciati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script per gestire l'apertura del dropdown al click
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dropbtn = document.querySelector('.dropbtn');
+            if (dropbtn) {
+                dropbtn.onclick = function() {
+                    document.querySelector('.dropdown-content').classList.toggle('show');
+                };
+            }
+            // Chiudi il dropdown se si clicca fuori
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName('dropdown-content');
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            };
+        });
+    </script>
+
+</body>
+</html>
