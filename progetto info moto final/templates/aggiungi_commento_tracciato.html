@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="comments-container">
+    <h2>Aggiungi un commento sul Tracciato</h2>
+    <!-- Form per aggiungere un nuovo commento ai tracciati -->
+    <form action="{{ url_for('aggiungi_commento_tracciato', tracciato_id=tracciato.id) }}" method="post">
+        <textarea name="testo" required placeholder="Lascia un commento sul tracciato..."></textarea>
+        <input type="submit" value="Invia commento">
+    </form>
+</div>
+{% endblock %}

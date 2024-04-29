@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="comments-container">
+    <div class="container">
+<table>
+    <tbody>
+        
+        <tr>
+            <td>{{ tracciato.nome }}</td>
+            <td>{{ tracciato.lunghezza }}</td>
+            <td>{{ tracciato.curvatura }}</td>
+            <td>{{ tracciato.nazione }} km/h</td>
+            <td><img src="{{ url_for('static', filename=tracciato.image_path) }}" alt="{{ tracciato.modello }}" height="auto" width="300"></td>
+            
+        </tr>                    
+        </tbody>
+    </table>
+    <section class="tracciato-list container">
+        
+            <table>
+    
+    <!-- Lista dei commenti esistenti sulle tracciato -->
+    <tr>
+   
+    <h2>Commenti sulle tracciato</h2>
+    <!-- Form per aggiungere un nuovo commento alle moto -->
+    <form action="/aggiungi_commento_tracciato/{{tracciato[0]}}" method="post">
+        <textarea name="testo" required placeholder="Lascia un commento sulla tracciato..."></textarea>
+        <input type="submit" value="Invia commento">
+    </form>
+    <ul>
+        {% for commento in commenti_tracciato %}
+        <li>
+            nome: {{ commento.utente_id }} data: {{ commento.data_ora }} 
+             commento:{{ commento.testo }}
+            
+        </li>
+        {% endfor %}
+    </ul>
+</tr> 
+ </div>
+</table>
+</section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="comments-container">
+    <h2>Aggiungi un commento sulla Moto</h2>
+    <!-- Form per aggiungere un nuovo commento alle moto -->
+    <form action="{{ url_for('aggiungi_commento_moto', moto_id=moto.id) }}" method="post">
+        <textarea name="testo" required placeholder="Lascia un commento sulla moto..."></textarea>
+        <input type="submit" value="Invia commento">
+    </form>
+</div>
+{% endblock %}

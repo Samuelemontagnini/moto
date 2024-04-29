@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="comments-container">
+    <div class="container">
+<table>
+    <tbody>
+        
+        <tr>
+            <td>{{ moto.modello }}</td>
+            <td>{{ moto.cilindrata }}</td>
+            <td>{{ moto.cv }}</td>
+            <td>{{ moto.velocita_massima }} km/h</td>
+            <td><img src="{{ url_for('static', filename=moto.image_path) }}" alt="{{ moto.modello }}" height="auto" width="300"></td>
+            
+        </tr>                    
+        </tbody>
+    </table>
+    <section class="moto-list container">
+        
+            <table>
+    
+    <!-- Lista dei commenti esistenti sulle moto -->
+    <tr>
+    
+    <h2>Commenti sulle Moto</h2>
+    <!-- Form per aggiungere un nuovo commento alle moto -->
+    <form action="/aggiungi_commento_moto/{{ moto.id }}" method="post">
+        <textarea name="testo" required placeholder="Lascia un commento sulla moto..."></textarea>
+        <input type="submit" value="Invia commento">
+    </form>
+    
+    <ul>
+        {% for commento in commenti_moto %}
+        <li>
+            <strong>{{ commento.username }}</strong> data :{{ commento.data_ora }}
+             commento :{{ commento.testo }}
+            
+        </li>
+        {% endfor %}
+    </ul>
+</tr> 
+ </div>
+</table>
+</section>
+</div>
+
+{% endblock %}

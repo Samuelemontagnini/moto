@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>Aggiungi un nuovo Tracciato</h2>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="form-container">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
@@ -19,8 +19,10 @@
             <label for="nazione">Nazione:</label>
             <input type="text" id="nazione" name="nazione" required>
         </div>
-        <label for="image">Immagine del Tracciato:</label>
-        <input type="file" name="image" id="image" required>
+        <div class="form-group">
+            <label for="image">Immagine del Tracciato:</label>
+            <input type="file" name="image" id="image" required>
+        </div>
         <button type="submit" class="btn">Aggiungi Tracciato</button>
     </form>
 {% endblock %}
